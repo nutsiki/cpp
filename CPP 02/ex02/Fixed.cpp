@@ -117,7 +117,6 @@ Fixed Fixed::operator/(const Fixed &cp) const
 
 Fixed & Fixed::operator++(void)
 {
-    std::cout << "pre incrementation" << std::endl;
     this->m_value++;
     return (*this);
 }
@@ -125,16 +124,13 @@ Fixed & Fixed::operator++(void)
 Fixed & Fixed::operator--(void)
 {
     this->m_value--;
-    std::cout << "pre incrementation" << std::endl;
     return (*this);
 }
 
 Fixed Fixed::operator++(int)
 {
     Fixed tmp(*this);
-//    this->m_value++;
-    this->operator++();
-//    std::cout << "post incrementation" << std::endl;
+    this->m_value++;
     return (tmp);
 }
 
@@ -142,8 +138,27 @@ Fixed Fixed::operator--(int)
 {
     Fixed tmp(*this);
     this->m_value--;
-    std::cout << "post incrementation" << std::endl;
     return (tmp);
+}
+
+Fixed & Fixed::max(Fixed &nb_a, Fixed &nb_b)
+{
+    return (nb_a > nb_b ? nb_a : nb_b);
+}
+
+const Fixed & Fixed::max(const Fixed &nb_a, const Fixed &nb_b)
+{
+    return (nb_a > nb_b ? nb_a : nb_b);
+}
+
+Fixed & Fixed::min(Fixed &nb_a, Fixed &nb_b)
+{
+    return (nb_a < nb_b ? nb_a : nb_b);
+}
+
+const Fixed & Fixed::min(const Fixed &nb_a, const Fixed &nb_b)
+{
+    return (nb_a < nb_b ? nb_a : nb_b);
 }
 
 std::ostream &operator<<(std::ostream &out, const Fixed &in)

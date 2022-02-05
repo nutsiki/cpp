@@ -38,10 +38,10 @@ public:
     Fixed	operator++(int);
     Fixed	operator--(int);
 
-//    static Fixed		&min(Fixed &nb_a, Fixed &nb_b);
-//    static const Fixed	&min(const Fixed &nb_a, const Fixed &nb_b);
-//    static Fixed		&max(Fixed &nb_a, Fixed &nb_b);
-//    static const Fixed	&max(const Fixed &nb_a, const Fixed &nb_b);
+    static Fixed		&min(Fixed &nb_a, Fixed &nb_b);
+    static const Fixed	&min(const Fixed &nb_a, const Fixed &nb_b);
+    static Fixed		&max(Fixed &nb_a, Fixed &nb_b);
+    static const Fixed	&max(const Fixed &nb_a, const Fixed &nb_b);
 };
 
 std::ostream &operator<<(std::ostream &out, const Fixed &in);
