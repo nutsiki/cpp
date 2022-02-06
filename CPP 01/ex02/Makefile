@@ -1,10 +1,10 @@
 NAME = hithisisbrain
 
-CC = clang++
+CC = c++
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
+SRC = main.cpp
 
 OBJS = $(SRC:.cpp=.o)
 

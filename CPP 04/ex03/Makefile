@@ -1,10 +1,10 @@
-NAME = clap
+NAME = materia
 
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = main.cpp ClapTrap.cpp
+SRC = main.cpp
 
 OBJS = $(SRC:.cpp=.o)
 

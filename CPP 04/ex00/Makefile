@@ -1,10 +1,10 @@
-NAME = clap
+NAME = poly
 
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = main.cpp ClapTrap.cpp
+SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 
 OBJS = $(SRC:.cpp=.o)
 

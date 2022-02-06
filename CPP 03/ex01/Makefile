@@ -1,8 +1,8 @@
 NAME = scav
 
-CC = clang++
+CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror
 
 SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
 
