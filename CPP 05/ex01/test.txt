@@ -1,0 +1,95 @@
+Testing all the constructors for Bureaucrats
+Parametric constructor Bureaucrat called.
+Parametric constructor Bureaucrat called.
+Default constructor Bureaucrat called.
+Copy constructor Bureaucrat called.
+Assignation operator called
+
+
+Testing all the constructors for Forms
+Default constructor Form called.
+Parametric constructor Form called.
+Copy constructor Form called.
+Assignation operator called
+Parametric constructor Form called.
+Copy constructor Form called.
+Assignation operator called
+
+
+Testing all the overloads on all the bureacrat and form created
+Joel, bureaucrat grade 150
+
+Marcel, bureaucrat grade 1
+
+NONAME, bureaucrat grade 150
+
+Joel, bureaucrat grade 150
+
+Assignation operator called
+After egaling joel to marcel : Joel, bureaucrat grade 1
+
+NONAME Form. Grade to sign: 150. Grade to execute: 150 Is signed: No.
+
+Form B Form. Grade to sign: 150. Grade to execute: 150 Is signed: No.
+
+Form B Form. Grade to sign: 150. Grade to execute: 150 Is signed: No.
+
+Form C Form. Grade to sign: 1. Grade to execute: 1 Is signed: No.
+
+Assignation operator called
+After egaling B_cpy to C : Form B Form. Grade to sign: 150. Grade to execute: 150 Is signed: No.
+
+
+
+Testing increase and decrease and seeing if exceptions works
+Joel has the lowest grade (150), he cant be degraded 
+Joel, bureaucrat grade 150
+
+Joel, bureaucrat grade 149
+
+Marcel has the highest grade (1), he cant be upgraded 
+Marcel, bureaucrat grade 1
+
+Marcel, bureaucrat grade 2
+
+
+
+Testing exeption on the creation of a bureaucrat
+Parametric constructor Bureaucrat called.
+Kokori take the lowest grade (150) because 1444 is not available.
+Parametric constructor Bureaucrat called.
+Kakari take the highest grade (1) because -1444 is not available.
+Kokori, bureaucrat grade 150
+
+Kakari, bureaucrat grade 1
+
+test sign form with good and wrong grades and sign form already signed
+Form Form C cant get signed by Kokori
+Form Form C got signed by Kakari
+The form : Form C is already signed.
+The form : Form C is already signed.
+Form Form B got signed by Joel
+Assignation operator called
+After egaling B_cpy to C : Form B Form. Grade to sign: 150. Grade to execute: 150 Is signed: Yes.
+
+Form Form C cant get signed by Kokori
+Kokori signs Form C
+Form Form C got signed by Kakari
+Kakari signs Form C
+The form : Form C is already signed.
+Marcel signs Form C
+The form : Form C is already signed.
+Kokori signs Form C
+The form : Form B is already signed.
+Joel signs Form B
+Destructor Bureaucrat called.
+Destructor Bureaucrat called.
+Destructor Form called.
+Destructor Form called.
+Destructor Form called.
+Destructor Form called.
+Destructor Form called.
+Destructor Bureaucrat called.
+Destructor Bureaucrat called.
+Destructor Bureaucrat called.
+Destructor Bureaucrat called.

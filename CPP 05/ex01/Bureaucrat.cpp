@@ -100,6 +100,21 @@ void Bureaucrat::incrementGrade()
 	return;
 }
 
+void Bureaucrat::signForm(Form &form)
+{
+	try
+	{
+		form.beSigned(*this);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << this->m_name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+		return;
+	}
+	std::cout	<< this->m_name << " signs " << form.getName() << std::endl;
+	return;
+}
+
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &new_cp)
 {
 	std::cout << "Assignation operator called" << std::endl;

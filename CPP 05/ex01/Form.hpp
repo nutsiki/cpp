@@ -6,6 +6,7 @@
 # define FORM_HPP
 # include "Bureaucrat.hpp"
 
+class Bureaucrat;
 class Form
 {
 
@@ -17,7 +18,7 @@ private:
 
 public:
 	Form();
-	Form(std::string name, int grade);
+	Form(std::string name, int gradeToSign, int gradeToExec);
 	~Form();
 	Form(Form const &src);
 	Form &operator=(const Form &new_cp);
