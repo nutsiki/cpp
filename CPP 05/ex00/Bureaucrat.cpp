@@ -6,41 +6,33 @@
 
 Bureaucrat::Bureaucrat() : m_name("NONAME"), m_grade(150)
 {
-	std::cout << "Default constructor Bureaucrat called." << std::endl;
+	std::cout << this->m_name  << " Default constructor Bureaucrat called." << std::endl;
 	return;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : m_name(name)
 {
-	std::cout << "Parametric constructor Bureaucrat called." << std::endl;
-	try
+	if (grade < 1)
 	{
-		if (grade < 1)
-		{
-			std::cout << this->m_name << " take the highest grade (1) because " << grade << " is not available." << std::endl;
-			this->m_grade = 1;
-			throw Bureaucrat::GradeTooHighException();
-		}
-		else if (grade > 150)
-		{
-			std::cout << this->m_name << " take the lowest grade (150) because " << grade << " is not available." << std::endl;
-			this->m_grade = 150;
-			throw Bureaucrat::GradeTooLowException();
-		}
-		else
-			this->m_grade = grade;
-
+		std::cout << this->m_name << " take the highest grade (1) because " << grade << " is not available." << std::endl;
+		this->m_grade = 1;
+		throw Bureaucrat::GradeTooHighException();
 	}
-	catch (std::exception & e)
+	else if (grade > 150)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << this->m_name << " take the lowest grade (150) because " << grade << " is not available." << std::endl;
+		this->m_grade = 150;
+		throw Bureaucrat::GradeTooLowException();
 	}
+	else
+		this->m_grade = grade;
+	std::cout << this->m_name  << " Parametric constructor Bureaucrat called." << std::endl;
 	return;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Destructor Bureaucrat called." << std::endl;
+	std::cout << this->m_name <<" Destructor Bureaucrat called." << std::endl;
 	return;
 }
 
@@ -63,40 +55,27 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::decrementGrade()
 {
-	try
+
+	if (this->m_grade == 150)
 	{
-		if (this->m_grade == 150)
-		{
-			std::cout << this->m_name << " has the lowest grade (150), he cant be degraded " << std::endl;
-			throw Bureaucrat::GradeTooLowException();
-		}
-		else
-			this->m_grade++;
+		std::cout << this->m_name << " has the lowest grade (150), he cant be degraded " << std::endl;
+		throw Bureaucrat::GradeTooLowException();
 	}
-	catch (std::exception & e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	else
+		this->m_grade++;
 	return;
 }
 
 
 void Bureaucrat::incrementGrade()
 {
-	try
+	if (this->m_grade == 1)
 	{
-		if (this->m_grade == 1)
-		{
-			std::cout << this->m_name << " has the highest grade (1), he cant be upgraded " << std::endl;
-			throw Bureaucrat::GradeTooHighException();
-		}
-		else
-			this->m_grade--;
+		std::cout << this->m_name << " has the highest grade (1), he cant be upgraded " << std::endl;
+		throw Bureaucrat::GradeTooHighException();
 	}
-	catch (std::exception & e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	else
+		this->m_grade--;
 	return;
 }
 

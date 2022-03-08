@@ -13,7 +13,7 @@ private:
 public:
 	ShrubberyCreationForm(std::string target);
 	ShrubberyCreationForm(ShrubberyCreationForm const &src);
-	~ShrubberyCreationForm();
+	virtual ~ShrubberyCreationForm();
 	ShrubberyCreationForm &operator=(ShrubberyCreationForm const &new_cp);
 	bool execute(Bureaucrat const &executor) const;
 };

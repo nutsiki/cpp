@@ -3,6 +3,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "Form.hpp"
+#include "Intern.hpp"
 
 int main(void) {
 
@@ -141,5 +142,10 @@ int main(void) {
 	{
 		std::cout << e.what() << std::endl;
 	}
-//	ppf.execute(bureaucrat4);
+	Intern someRandomIntern;
+	Form* rrrf;
+	rrrf = someRandomIntern.makeForm("robotomy request", "Bender");
+	std::cout << *rrrf << std::endl;
+	delete rrrf;
+	return (0);
 }

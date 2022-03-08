@@ -12,18 +12,12 @@ Form::Form() : m_name("NONAME"), m_grade_toSign(150), m_grade_toExec(150), m_sig
 
 Form::Form(std::string name, int gradeToSign, int gradeToExec) : m_name(name), m_grade_toSign(gradeToSign), m_grade_toExec(gradeToExec), m_signed(false)
 {
+
+	if (gradeToSign < 1 || gradeToExec < 1)
+		throw Form::GradeTooHighException();
+	else if (gradeToSign > 150 || gradeToExec > 150)
+		throw Form::GradeTooLowException();
 	std::cout << "Parametric constructor Form called." << std::endl;
-	try
-	{
-		if (gradeToSign < 1 || gradeToExec < 1)
-			throw Form::GradeTooHighException();
-		else if (gradeToSign > 150 || gradeToExec > 150)
-			throw Form::GradeTooLowException();
-	}
-	catch (std::exception & e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
 	return;
 }
 
@@ -60,31 +54,22 @@ bool Form::getSigned() const
 	return (this->m_signed);
 }
 
-void Form::beSigned(const Bureaucrat &bureaucrat)
+int Form::beSigned(const Bureaucrat &bureaucrat)
 {
 	if (this->m_signed == true)
 	{
 		std::cout << "The form : " << this->m_name << " is already signed." << std::endl;
-		return;
+		return(2);
 	}
-	try
+	if (bureaucrat.getGrade() > this->getGradeToSign())
 	{
-		if (bureaucrat.getGrade() > this->getGradeToSign())
-		{
-			std::cout << "Form " << this->m_name << " cant get signed by " << bureaucrat.getName() << std::endl;
-			throw Form::GradeTooLowException();
-		}
-		else
-		{
-			std::cout << "Form " << this->m_name << " got signed by " << bureaucrat.getName() << std::endl;
-			this->m_signed = true;
-		}
+		std::cout << "Form " << this->m_name << " cant get signed by " << bureaucrat.getName() << std::endl;
+		throw Form::GradeTooLowException();
+		return (1);
 	}
-	catch (std::exception & e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	return;
+	std::cout << "Form " << this->m_name << " got signed by " << bureaucrat.getName() << std::endl;
+	this->m_signed = true;
+	return (0);
 }
 Form &Form::operator=(const Form &new_cp)
 {

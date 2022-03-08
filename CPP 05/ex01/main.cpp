@@ -28,7 +28,69 @@
 //
 //	return (0);
 //}
-
+//int main()
+//{
+//	Bureaucrat* bureaucrat = new Bureaucrat("Bob", 2);
+//	Bureaucrat* stagiaire = new Bureaucrat("Cafe", 149);
+//
+//	// Test --
+//	try
+//	{
+//		std::cout << *bureaucrat;
+//		bureaucrat->incrementGrade();
+//		std::cout << bureaucrat->getName() << " upgraded ! Felicitations! " << std::endl;
+//		std::cout << *bureaucrat;
+//		bureaucrat->incrementGrade();
+//		std::cerr << "[+][1] Exception does'nt work nicely. " << std::endl;
+//	}
+//	catch (std::exception & e)
+//	{
+//		std::cerr << "[1] Exception : " << e.what() << std::endl;
+//	}
+//
+//	// Test ++
+//	try
+//	{
+//		std::cout << *stagiaire;
+//		stagiaire->decrementGrade();
+//		std::cout << stagiaire->getName() << " downgraded ! That's suck! " << std::endl;
+//		std::cout << *stagiaire;
+//		stagiaire->decrementGrade();
+//		std::cerr << "[+][2] Exception does'nt work nicely. " << std::endl;
+//	}
+//	catch (std::exception & e)
+//	{
+//		std::cerr << "[2] Exception : " << e.what() << std::endl;
+//	}
+//
+//	Bureaucrat* toHigh;
+//	Bureaucrat* toLow;
+//
+//	// Test ToHigh
+//	try
+//	{
+//		toHigh = new Bureaucrat("ToHigh", 0);
+//		delete toHigh;
+//		std::cerr << "[+][3] Exception does'nt work nicely. " << std::endl;
+//	}
+//	catch (std::exception & e)
+//	{
+//		std::cerr << "[3] Exception : " << e.what() << std::endl;
+//	}
+//	try
+//	{
+//		toLow = new Bureaucrat("ToLow", 420);
+//		delete toLow;
+//		std::cerr << "[+][4] Exception does'nt work nicely. " << std::endl;
+//	}
+//	catch (std::exception & e)
+//	{
+//		std::cerr << "[4] Exception : " << e.what() << std::endl;
+//	}
+//	delete bureaucrat;
+//	delete stagiaire;
+//	return (0);
+//}
 static void sendText(std::string const txt)
 {
 	std::cout << txt << std::endl;
@@ -72,11 +134,25 @@ int main()
 
 	//test exeptions
 	sendText("Testing increase and decrease and seeing if exceptions works");
-	joel.decrementGrade();
+	try
+	{
+		joel.decrementGrade();
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 	std::cout << joel << std::endl;
 	joel.incrementGrade();
 	std::cout << joel << std::endl;
-	marcel.incrementGrade();
+	try
+	{
+		marcel.incrementGrade();
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 	std::cout << marcel << std::endl;
 	marcel.decrementGrade();
 	std::cout << marcel << std::endl;
@@ -84,25 +160,46 @@ int main()
 
 	//test constructor with wrong grades
 	sendText("Testing exeption on the creation of a bureaucrat");
-	Bureaucrat Kokori("Kokori", 1444);
-	Bureaucrat Kakari("Kakari", -1444);
-	std::cout << Kokori << std::endl;
-	std::cout << Kakari << std::endl;
+	try
+	{
+		Bureaucrat Kokori("Kokori", 1444);
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	try
+	{
+		Bureaucrat Kakari("Kakari", -1444);
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 
 	//test sign form with good and wrong grades
 	sendText("test sign form with good and wrong grades and sign form already signed");
-	C.beSigned(Kokori);
-	C.beSigned(Kakari);
-	C.beSigned(marcel);
-	C.beSigned(Kokori);
+	try
+	{
+		C.beSigned(marcel);
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 	B.beSigned(joel);
 	B_cpy = C;
 	std::cout << "After egaling B_cpy to C : " << B_cpy << std::endl;
-	Kokori.signForm(C_cpy);
-	Kakari.signForm(C_cpy);
-	marcel.signForm(C_cpy);
-	Kokori.signForm(C_cpy);
-	joel.signForm(B_cpy);
+	try
+	{
 
+		marcel.signForm(C_cpy);
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	joel.signForm(B_cpy);
+	joel.signForm(B_cpy);
 	return (0);
 }

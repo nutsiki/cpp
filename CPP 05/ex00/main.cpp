@@ -1,25 +1,65 @@
 #include "Bureaucrat.hpp"
 
-int main(void)
+int main()
 {
-	Bureaucrat momo = Bureaucrat("momo", 560);
-	Bureaucrat nathan = Bureaucrat();
-	Bureaucrat gauthier = Bureaucrat("gauthier",-900);
-	Bureaucrat copain = Bureaucrat(momo);
-	std::cout << momo << std::endl;
-	std::cout << nathan << std::endl;
-	std::cout << gauthier << std::endl;
-	std::cout << copain << std::endl;
-	momo.decrementGrade();
-	std::cout << momo << std::endl;
-	momo.incrementGrade();
-	while (momo.getGrade() > 1)
-	{
-		momo.incrementGrade();
-		std::cout << momo << std::endl;
-	}
-	momo.incrementGrade();
-	std::cout << momo << std::endl;
+	Bureaucrat* bureaucrat = new Bureaucrat("Bob", 2);
+	Bureaucrat* stagiaire = new Bureaucrat("Cafe", 149);
 
+	// Test --
+	try
+	{
+		std::cout << *bureaucrat;
+		bureaucrat->incrementGrade();
+		std::cout << bureaucrat->getName() << " upgraded ! Felicitations! " << std::endl;
+		std::cout << *bureaucrat;
+		bureaucrat->incrementGrade();
+		std::cerr << "[+][1] Exception does'nt work nicely. " << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << "[1] Exception : " << e.what() << std::endl;
+	}
+
+	// Test ++
+	try
+	{
+		std::cout << *stagiaire;
+		stagiaire->decrementGrade();
+		std::cout << stagiaire->getName() << " downgraded ! That's suck! " << std::endl;
+		std::cout << *stagiaire;
+		stagiaire->decrementGrade();
+		std::cerr << "[+][2] Exception does'nt work nicely. " << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << "[2] Exception : " << e.what() << std::endl;
+	}
+
+	Bureaucrat* toHigh;
+	Bureaucrat* toLow;
+
+	// Test ToHigh
+	try
+	{
+		toHigh = new Bureaucrat("ToHigh", 0);
+		delete toHigh;
+		std::cerr << "[+][3] Exception does'nt work nicely. " << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << "[3] Exception : " << e.what() << std::endl;
+	}
+	try
+	{
+		toLow = new Bureaucrat("ToLow", 420);
+		delete toLow;
+		std::cerr << "[+][4] Exception does'nt work nicely. " << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << "[4] Exception : " << e.what() << std::endl;
+	}
+	delete bureaucrat;
+	delete stagiaire;
 	return (0);
 }
