@@ -5,22 +5,26 @@
 #ifndef SPAN_HPP
 # define SPAN_HPP
 # include <iostream>
+# include <vector>
+# include <algorithm>
 
 
 class Span
 {
 private:
-	unsigned int m_N;
+	unsigned int m_n;
+	std::vector<int> m_array;
 public:
 	Span();
 	Span(unsigned int N);
 	~Span();
 	Span(Span const &src);
 	Span &operator=(const Span &new_cp);
-	addNumber();
-	shortestSpan();
-	longestSpan();
-	addMoreNumber();
+	void addNumber(int nb);
+	void addMoreNumber(int i, int j);
+	void printArray();
+	unsigned int shortestSpan();
+	unsigned int longestSpan();
 	class TooMuchNumberException : public std::exception
 	{
 	public:
